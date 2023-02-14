@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Interfaz</title>
+        <!-- Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">David Prada</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+            </div>
+        </nav>
+        <div class="container my-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white">
+                    <h2>Consultores</h2>
+                    <div class="form-group">
+                      <label for="FormControlSelect1">Seleccione consultor:</label>
+                      <select class="form-control" id="FormControlSelect1">
+                      </select>
+                      </div>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
+                    <h2>Resultados ganancias</h2>
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th class="centrado">Periodo</th>
+                                <th class="centrado">Receita Liquida</th>
+                                <th class="centrado">Custo Fixo</th>
+                                <th class="centrado">Comissao</th>
+                                <th class="centrado">Lucro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        
+    
+    
+    </body>
+</html>
+
+<script>
+    var url = 'https://agencetes.azurewebsites.net/consultores/listar';
+      
+    fetch(url).then(function(result){
+
+        if(result.ok){
+            return result.json();
+        }
+    }).then(function(data){
+        data.forEach(function(element){
+            let FormControlSelect1= document.getElementById("FormControlSelect1");
+            let opt =document.createElement("option");
+            opt.appendChild(document.createTextNode(element.no_usuario));
+            opt.value=element.no_usuario;
+
+            FormControlSelect1.appendChild(opt);
+        })
+    })
+         
+  </script>
