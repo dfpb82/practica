@@ -1,4 +1,4 @@
-package com.apitest.practica;
+package com.apitest.practica.API;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
